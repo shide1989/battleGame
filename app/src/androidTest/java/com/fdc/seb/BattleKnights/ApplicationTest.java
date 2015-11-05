@@ -1,4 +1,4 @@
-package com.fdc.seb.BattleOfKings;
+package com.fdc.seb.BattleKnights;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

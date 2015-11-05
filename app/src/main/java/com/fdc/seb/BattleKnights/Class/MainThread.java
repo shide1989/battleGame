@@ -1,9 +1,7 @@
-package com.fdc.seb.BattleOfKings;
+package com.fdc.seb.BattleKnights.Class;
 
 import android.graphics.Canvas;
 import android.view.SurfaceHolder;
-
-import com.fdc.seb.BattleOfKings.Class.GamePanel;
 
 /**
  * Created by Sebos on 30/09/2015.

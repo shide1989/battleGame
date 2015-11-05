@@ -1,4 +1,4 @@
-package com.fdc.seb.BattleOfKings;
+package com.fdc.seb.BattleKnights;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -7,7 +7,7 @@ import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.fdc.seb.BattleOfKings.Class.GamePanel;
+import com.fdc.seb.BattleKnights.Class.GamePanel;
 
 
 public class Game extends Activity {

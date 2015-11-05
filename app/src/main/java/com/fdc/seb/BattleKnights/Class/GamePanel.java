@@ -1,4 +1,4 @@
-package com.fdc.seb.BattleOfKings.Class;
+package com.fdc.seb.BattleKnights.Class;
 
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -11,10 +11,9 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
-import com.fdc.seb.BattleOfKings.MainThread;
-import com.fdc.seb.BattleOfKings.Entities.Background;
-import com.fdc.seb.BattleOfKings.Entities.Player;
-import com.fdc.seb.BattleOfKings.R;
+import com.fdc.seb.BattleKnights.Entities.Background;
+import com.fdc.seb.BattleKnights.Entities.Player;
+import com.fdc.seb.BattleKnights.R;
 
 /**
  * Created by Sebos on 30/09/2015.
@@ -58,7 +57,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
         //Instanciate game objects;
         bg = new Background(BitmapFactory.decodeResource(getResources(), R.drawable.grassbg1));
-        player = new Player(BitmapFactory.decodeResource(getResources(), R.drawable.elisaspritesheet), 3, 54, 54, 4, 3, 4);
+        //Create player bitmap w/ frames, size, separator etc.
+        player = new Player(Player.TChar.ELISA);
 
         //Start the game loop
 
@@ -127,18 +127,20 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
                 break;
             case MotionEvent.ACTION_MOVE:
-                if (tx > x) {
+                if (tx > x && tx - x > 10) {
+
                     Log.i(TAG, "TOUCH_RIGHT");
-                } else {
+                } else if (tx - x < -10) {
                     Log.i(TAG, "TOUCH_LEFT");
                 }
 
-                if (ty > y) {
+                if (ty > y && (ty - y > 10)) {
                     Log.i(TAG, "TOUCH_DOWN");
                     player.setDown(true);
-                } else {
+                } else if (ty - y < -10) {
                     Log.i(TAG, "TOUCH_UP");
-                    player.setUp(true);
+                    player.jump();
+                    //player.setUp(true);
                 }
                 break;
         }

@@ -1,10 +1,11 @@
-package com.fdc.seb.BattleOfKings.Class;
+package com.fdc.seb.BattleKnights.Class;
 
 import android.graphics.Bitmap;
 
 /**
  * Created by Sebos on 07/10/2015.
  */
+
 public class Animation {
     private Bitmap[] frames;
     private int currentFrame = 0;
@@ -32,6 +33,7 @@ public class Animation {
     public void setFrames(Bitmap[] frames) {
         this.frames = frames;
         currentFrame = 0;
+        playedOnce =false;
         startTime = System.nanoTime();
     }
 
