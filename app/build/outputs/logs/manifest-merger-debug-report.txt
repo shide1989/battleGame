@@ -16,33 +16,35 @@ ADDED from AndroidManifest.xml:2:1
 application
 ADDED from AndroidManifest.xml:5:5
 	android:label
-		ADDED from AndroidManifest.xml:8:9
-	android:allowBackup
-		ADDED from AndroidManifest.xml:6:9
-	android:icon
-		ADDED from AndroidManifest.xml:7:9
-	android:theme
 		ADDED from AndroidManifest.xml:9:9
-activity#com.fdc.seb.feedthecat.Game
-ADDED from AndroidManifest.xml:10:9
+	android:allowBackup
+		ADDED from AndroidManifest.xml:7:9
+	android:icon
+		ADDED from AndroidManifest.xml:8:9
+	android:theme
+		ADDED from AndroidManifest.xml:10:9
+	android:name
+		ADDED from AndroidManifest.xml:6:9
+activity#com.fdc.seb.BattleOfKings.Game
+ADDED from AndroidManifest.xml:11:9
 	android:screenOrientation
-		ADDED from AndroidManifest.xml:14:13
+		ADDED from AndroidManifest.xml:15:13
 	android:label
-		ADDED from AndroidManifest.xml:13:13
+		ADDED from AndroidManifest.xml:14:13
 	android:configChanges
+		ADDED from AndroidManifest.xml:13:13
+	android:name
 		ADDED from AndroidManifest.xml:12:13
-	android:name
-		ADDED from AndroidManifest.xml:11:13
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:15:13
+ADDED from AndroidManifest.xml:16:13
 action#android.intent.action.MAIN
-ADDED from AndroidManifest.xml:16:17
+ADDED from AndroidManifest.xml:17:17
 	android:name
-		ADDED from AndroidManifest.xml:16:25
+		ADDED from AndroidManifest.xml:17:25
 category#android.intent.category.LAUNCHER
-ADDED from AndroidManifest.xml:18:17
+ADDED from AndroidManifest.xml:19:17
 	android:name
-		ADDED from AndroidManifest.xml:18:27
+		ADDED from AndroidManifest.xml:19:27
 uses-sdk
 INJECTED from AndroidManifest.xml:0:0 reason: use-sdk injection requested
 	android:targetSdkVersion
