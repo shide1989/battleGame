@@ -1,9 +1,9 @@
-package com.fdc.seb.feedthecat.Entities;
+package com.fdc.seb.BattleOfKings.Entities;
 
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 
-import com.fdc.seb.feedthecat.Class.GamePanel;
+import com.fdc.seb.BattleOfKings.Class.GamePanel;
 
 /**
  * Created by Sebos on 30/09/2015.

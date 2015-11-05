@@ -1,4 +1,4 @@
-package com.fdc.seb.feedthecat.Class;
+package com.fdc.seb.BattleOfKings.Class;
 
 import android.content.Context;
 import android.graphics.BitmapFactory;
@@ -11,11 +11,10 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 
-import com.fdc.seb.feedthecat.MainThread;
-import com.fdc.seb.feedthecat.Listener.OnSwipeTouchListener;
-import com.fdc.seb.feedthecat.Entities.Background;
-import com.fdc.seb.feedthecat.Entities.Player;
-import com.fdc.seb.feedthecat.R;
+import com.fdc.seb.BattleOfKings.MainThread;
+import com.fdc.seb.BattleOfKings.Entities.Background;
+import com.fdc.seb.BattleOfKings.Entities.Player;
+import com.fdc.seb.BattleOfKings.R;
 
 /**
  * Created by Sebos on 30/09/2015.

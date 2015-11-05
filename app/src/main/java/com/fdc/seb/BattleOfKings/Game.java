@@ -1,18 +1,13 @@
-package com.fdc.seb.feedthecat;
+package com.fdc.seb.BattleOfKings;
 
-import android.app.ActionBar;
 import android.app.Activity;
-import android.graphics.PixelFormat;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
-import com.fdc.seb.feedthecat.Class.GamePanel;
-
-import java.text.Format;
+import com.fdc.seb.BattleOfKings.Class.GamePanel;
 
 
 public class Game extends Activity {

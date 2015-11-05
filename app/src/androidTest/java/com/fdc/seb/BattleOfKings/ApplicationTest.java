@@ -1,4 +1,4 @@
-package com.fdc.seb.feedthecat;
+package com.fdc.seb.BattleOfKings;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

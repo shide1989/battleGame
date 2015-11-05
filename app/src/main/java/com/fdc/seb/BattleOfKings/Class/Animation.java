@@ -1,7 +1,6 @@
-package com.fdc.seb.feedthecat.Class;
+package com.fdc.seb.BattleOfKings.Class;
 
 import android.graphics.Bitmap;
-import android.util.Log;
 
 /**
  * Created by Sebos on 07/10/2015.

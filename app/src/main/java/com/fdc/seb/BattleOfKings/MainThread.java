@@ -1,10 +1,9 @@
-package com.fdc.seb.feedthecat;
+package com.fdc.seb.BattleOfKings;
 
 import android.graphics.Canvas;
-import android.util.Log;
 import android.view.SurfaceHolder;
 
-import com.fdc.seb.feedthecat.Class.GamePanel;
+import com.fdc.seb.BattleOfKings.Class.GamePanel;
 
 /**
  * Created by Sebos on 30/09/2015.

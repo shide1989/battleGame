@@ -1,6 +1,5 @@
-package com.fdc.seb.feedthecat.Entities;
+package com.fdc.seb.BattleOfKings.Entities;
 
-import android.graphics.Bitmap;
 import android.graphics.Rect;
 
 /**
