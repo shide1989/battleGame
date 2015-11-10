@@ -12,6 +12,8 @@ public class Animation {
     private long startTime;
     private long delay;
     private boolean playedOnce;
+    private boolean playOnce = false;
+    private boolean playReversed = false;
 
     public Animation() {
         startTime = System.nanoTime();
@@ -30,6 +32,18 @@ public class Animation {
         currentFrame = i;
     }
 
+    public void setPlayReversed(boolean playReversed) {
+        this.playReversed = playReversed;
+    }
+
+    public void setPlayOnce(boolean playOnce) {
+        this.playOnce = playOnce;
+    }
+
+    public void setPlayedOnce(boolean playedOnce) {
+        this.playedOnce = playedOnce;
+    }
+
     public void setFrames(Bitmap[] frames) {
         this.frames = frames;
         currentFrame = 0;
@@ -46,10 +60,21 @@ public class Animation {
         long elapsed = (System.nanoTime() - startTime) / 1000000;
         if (elapsed > delay) {
             startTime = System.nanoTime();
-            currentFrame++;
-            if (currentFrame >= frames.length) {
-                currentFrame = 0;
-                playedOnce = true;
+            if (playOnce && playedOnce) {
+                return;
+            }
+            if (!playReversed) {
+                currentFrame++;
+                if (currentFrame >= frames.length) {
+                    currentFrame = 0;
+                    playedOnce = true;
+                }
+            } else {
+                currentFrame--;
+                if (currentFrame <= 0) {
+                    currentFrame = frames.length -1;
+                    playedOnce = true;
+                }
             }
         }
 
@@ -59,4 +84,5 @@ public class Animation {
     public Bitmap getImage() {
         return frames[currentFrame];
     }
+
 }

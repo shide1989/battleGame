@@ -33,16 +33,9 @@ public class Background {
 
     public void draw(Canvas canvas) {
 
-//        bitmap.reconfigure(canvas.getWidth(), canvas.getHeight(), bitmap.getConfig());
         canvas.drawBitmap(bitmap, x, y, null);
         if (x <= 0) {
             canvas.drawBitmap(bitmap, x + WIDTH, y, null);
-//            int screenDiff = GamePanel.SCREEN_WIDTH - WIDTH;
-//            if (x <= screenDiff - WIDTH) {
-//                canvas.drawBitmap(bitmap, x + 2*WIDTH , y, null);
-//            }
         }
-
-//        canvas.drawText("y : " + y, 20, 10, null);
     }
 }

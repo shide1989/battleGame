@@ -6,6 +6,7 @@ import android.graphics.Canvas;
 
 import com.fdc.seb.BattleKnights.App;
 import com.fdc.seb.BattleKnights.Class.Animation;
+import com.fdc.seb.BattleKnights.Class.GameObject;
 import com.fdc.seb.BattleKnights.R;
 
 /**
@@ -77,6 +78,7 @@ public class Player extends GameObject {
 
         //create jump animations
         jump = new Animation();
+        jump.setPlayOnce(true);
         frames = new Bitmap[4];
         xStart = 9;
         yStart = 62;
@@ -93,7 +95,7 @@ public class Player extends GameObject {
         move = new Animation();
         frames = new Bitmap[8];
 
-        xStart = 5; 
+        xStart = 5;
         yStart = 121;
 
         for (int i = 0; i < frames.length; i++) {
@@ -108,22 +110,22 @@ public class Player extends GameObject {
 
     public void setUp(boolean up) {
         this.up = up;
-        this.down = !up;
+        this.down = false;
     }
 
     public void setDown(boolean down) {
         this.down = down;
-        this.up = !down;
+        this.up = false;
     }
 
     public void setRight(boolean right) {
         this.right = right;
-        this.left = !right;
+        this.left = false;
     }
 
     public void setLeft(boolean left) {
         this.left = left;
-        this.right = !left;
+        this.right = false;
     }
 
 
@@ -148,25 +150,29 @@ public class Player extends GameObject {
         //Player Jump animation
         if (up) {
             if (y >= 400 && elapsed > 100 && !isJumping) {
+                jump.setPlayedOnce(false);
                 currentAnimation = jump;
                 isJumping = true;
                 dy = -7;//(dya -= 1);
                 up = false;
             }
-        }
-        else if (down) {
+        } else if (down) {
             //TODO : implement down actions
         }
 
 
         //Player move animation
         if (right) {
-            if (currentAnimation == defaultAnim)
+            if (currentAnimation == defaultAnim) {
+                move.setPlayReversed(false);
                 currentAnimation = move;
+            }
             dx += 2;
         } else if (left) {
-            if (currentAnimation == defaultAnim)
+            if (currentAnimation == defaultAnim) {
+                move.setPlayReversed(true);
                 currentAnimation = move;
+            }
             dx -= 2;
         } else {
             if (dx > 0) {
@@ -188,17 +194,21 @@ public class Player extends GameObject {
         currentAnimation.update();
 
         y += dy * 2;
+
         x += dx;
-        //dy = 0;
+        if (x < 0) {
+            x = 0;
+        }
 
         //Player jump animation
         //400 = ground at the moment
-        if (y > 400) {
+        if (y >= 400) {
             y = 400;
             dy = 0;
             isJumping = false;
         }
-        if (dx == 0) {
+
+        if (!isJumping && dx == 0) {
             currentAnimation = defaultAnim;
         }
 

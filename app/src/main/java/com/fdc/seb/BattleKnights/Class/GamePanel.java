@@ -30,6 +30,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     private Player player;
 
     private boolean playing;
+    private boolean showMovePointer = false;
 
     public GamePanel(Context context) {
         super(context);
@@ -89,12 +90,10 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
-    private float x, y;
+    private float x, y, tx, ty;
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float tx = event.getX(),
-                ty = event.getY();
         int pointerIndex = event.getActionIndex();
 
         int pointerId = event.getPointerId(pointerIndex);
@@ -102,6 +101,11 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
         int action = (event.getAction() & MotionEvent.ACTION_MASK);
 
         int pointCnt = event.getPointerCount();
+
+        tx = event.getX();
+        ty = event.getY();
+
+        //TODO : implement multitouch gesture
 
         for (int i = 0; i < pointCnt; i++) {
             int id = event.getPointerId(i);
@@ -116,9 +120,12 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
             case MotionEvent.ACTION_DOWN:
                 Log.i(TAG, "TOUCH_START");
+
+
                 x = tx;
                 y = ty;
                 player.setSide(true);
+                this.showMovePointer = true;
 
                 break;
             case MotionEvent.ACTION_UP:
@@ -132,21 +139,25 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 
                 break;
             case MotionEvent.ACTION_MOVE:
-                if (tx > x && tx - x > 10) {
+                if (tx > x && tx - x > 15) {
                     Log.i(TAG, "TOUCH_RIGHT");
                     player.setRight(true);
-                } else if (tx - x < -10) {
+                } else if (tx - x < -15) {
                     Log.i(TAG, "TOUCH_LEFT");
                     player.setLeft(true);
+                } else {
+                    player.setRight(false); //left = false;
                 }
 
-                if (ty > y && (ty - y > 10)) {
+                if (ty > y && (ty - y > 15)) {
                     Log.i(TAG, "TOUCH_DOWN");
                     player.setDown(true);
-                } else if (ty - y < -10) {
+                } else if (ty - y < -15) {
                     Log.i(TAG, "TOUCH_UP");
                     player.setUp(true);
                     //player.setUp(true);
+                } else {
+                    player.setDown(false); //up = false
                 }
                 break;
         }
@@ -175,17 +186,27 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             bg.draw(canvas);
             player.draw(canvas);
 
-            canvas.drawCircle(x, y , 5, new Paint());
-            drawFPS(canvas);
+            //Draw FPS
+            Paint paint = new Paint();
+            paint.setColor(Color.BLACK);
+            paint.setTextSize(12F);
+            canvas.drawText("FPS : " + thread.getAvgFPS(), 20, 20, paint);
+
+
+            //Draw Pointers
+            if (showMovePointer) {
+                paint = new Paint();
+                paint.setColor(Color.GRAY);
+                paint.setAlpha(128);
+                canvas.drawCircle(x / scaleX, y / scaleY, 45, paint);
+
+                paint.setColor(Color.DKGRAY);
+                paint.setAlpha(128);
+                canvas.drawCircle(tx / scaleX, ty / scaleY, 15, paint);
+            }
+
 
             canvas.restoreToCount(savedState);
         }
-    }
-
-    private void drawFPS(Canvas canvas) {
-        Paint paint = new Paint();
-        paint.setColor(Color.BLACK);
-        paint.setTextSize(11F);
-        canvas.drawText("FPS : " + thread.getAvgFPS(), 20, 20, paint);
     }
 }

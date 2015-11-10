@@ -1,4 +1,4 @@
-package com.fdc.seb.BattleKnights.Entities;
+package com.fdc.seb.BattleKnights.Class;
 
 import android.graphics.Rect;
 
