@@ -25,7 +25,7 @@ ADDED from AndroidManifest.xml:5:5
 		ADDED from AndroidManifest.xml:10:9
 	android:name
 		ADDED from AndroidManifest.xml:6:9
-activity#com.fdc.seb.BattleOfKings.Game
+activity#com.fdc.seb.BattleKnights.Game
 ADDED from AndroidManifest.xml:11:9
 	android:screenOrientation
 		ADDED from AndroidManifest.xml:15:13
