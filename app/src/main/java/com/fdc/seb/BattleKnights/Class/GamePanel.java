@@ -29,7 +29,6 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
     private Background bg;
     private Player player;
 
-
     private boolean playing;
 
     public GamePanel(Context context) {
@@ -112,26 +111,33 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
 //                    x[id] = event.getX(i);
 //                    y[id] = event.getY(i);
         }
+
         switch (action) {
 
             case MotionEvent.ACTION_DOWN:
+                Log.i(TAG, "TOUCH_START");
                 x = tx;
                 y = ty;
-                Log.i(TAG, "TOUCH_START");
+                player.setSide(true);
+
                 break;
             case MotionEvent.ACTION_UP:
                 Log.i(TAG, "TOUCH_END");
-
+                player.setRight(false);
+                player.setLeft(false);
+                player.setUp(false);
+                player.setDown(false);
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
 
                 break;
             case MotionEvent.ACTION_MOVE:
                 if (tx > x && tx - x > 10) {
-
                     Log.i(TAG, "TOUCH_RIGHT");
+                    player.setRight(true);
                 } else if (tx - x < -10) {
                     Log.i(TAG, "TOUCH_LEFT");
+                    player.setLeft(true);
                 }
 
                 if (ty > y && (ty - y > 10)) {
@@ -139,7 +145,7 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
                     player.setDown(true);
                 } else if (ty - y < -10) {
                     Log.i(TAG, "TOUCH_UP");
-                    player.jump();
+                    player.setUp(true);
                     //player.setUp(true);
                 }
                 break;
@@ -168,6 +174,8 @@ public class GamePanel extends SurfaceView implements SurfaceHolder.Callback {
             canvas.scale(scaleX, scaleY);
             bg.draw(canvas);
             player.draw(canvas);
+
+            canvas.drawCircle(x, y , 5, new Paint());
             drawFPS(canvas);
 
             canvas.restoreToCount(savedState);
